@@ -80,14 +80,15 @@ HAVING avg_revenue_billions >=150
 ;
 
 # What companies offer healthcare benefits and offer at least 10 weeks of maternity leave?
-SELECT industry, ROUND(AVG(revenue),1) as avg_revenue_billions
+SELECT company_name
 FROM fortune_companies
-GROUP BY industry
-HAVING avg_revenue_billions >=150
+WHERE healthcare_benefits=1
+GROUP BY company_name
+HAVING maternity_leave_weeks>=10
 ;
 
 # What company in the Technology industry has the most revenue, and what's their revenue?
-SELECT company_name, MAX(revenue)
+SELECT company_name, MAX(revenue) as company_revenue
 FROM fortune_companies
 WHERE industry ="Technology"
 ;
